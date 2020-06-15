@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Decathlon score calculator - I'm ugly but I work!</title>
+        <meta charset="utf-8">
+        <script src="jquery-3.5.1.min.js"></script>
+        <script src="decathlon.js"></script>
+    </head>
+
+    <body>
+        <form id="scores">
+            100 metres: <input type="text" id="METRES_100" name="METRES_100"> seconds<br/>
+            Long jump: <input type="text" id="LONG_JUMP" name="LONG_JUMP"> metres<br/>
+            Shot put: <input type="text" id="SHOT_PUT" name="SHOT_PUT"> metres<br/>
+            High jump: <input type="text" id="HIGH_JUMP" name="HIGH_JUMP"> metres<br/>
+            400 metres: <input type="text" id="METRES_400" name="METRES_400"> seconds<br/>
+            110 metres hurdles: <input type="text" id="METRES_110_HURDLES" name="METRES_110_HURDLES"> seconds<br/>
+            Discus throw: <input type="text" id="DISCUS_THROW" name="DISCUS_THROW"> metres<br/>
+            Pole vault: <input type="text" id="POLE_VAULT" name="POLE_VAULT"> metres<br/>
+            Javelin throw: <input type="text" id="JAVELIN_THROW" name="JAVELIN_THROW"> metres<br/>
+            1500 metres: <input type="text" id="METRES_1500" name="METRES_1500"> seconds<br/>
+        </form>
+
+        <button onClick="javascript:getTotalScore();">Get score</button>
+
+        <div id="totalScore"></div>
+    </body>
+</html>
