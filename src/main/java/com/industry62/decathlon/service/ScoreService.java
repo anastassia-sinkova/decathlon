@@ -1,21 +1,24 @@
 package com.industry62.decathlon.service;
 
 import com.industry62.decathlon.domain.Event;
+import com.industry62.decathlon.domain.EventScore;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
+import java.util.List;
 
 @Service
 public class ScoreService {
 
-    public int calculateTotalScore(Map<Event, Double> scores) {
-        return scores.entrySet().stream()
-                .filter(this::isValid)
-                .mapToInt(e -> calculateEventScore(e.getKey(), e.getValue()))
+    public int calculateTotalScore(List<EventScore> eventScores) {
+        return eventScores.stream()
+                .mapToInt(ScoreService::calculateEventScore)
                 .sum();
     }
 
-    static int calculateEventScore(Event event, double score) {
+    static int calculateEventScore(EventScore eventScore) {
+        Event event = eventScore.getEvent();
+        double score = eventScore.getScore();
+
         switch (event) {
             case METRES_100:
             case METRES_400:
@@ -39,11 +42,6 @@ public class ScoreService {
 
     static double convertMetresToCentimetres(double score) {
         return score * 100;
-    }
-
-    private boolean isValid(Map.Entry<Event, Double> score) {
-        return score.getValue() != null
-                && score.getKey() != null;
     }
 
 }

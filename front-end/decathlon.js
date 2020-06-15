@@ -1,10 +1,19 @@
 function getTotalScore() {
     var formArray = $('#scores').serializeArray();
 
-    var formAsJson = {};
+    var formAsJson = [];
 
-    for (var i = 0; i < formArray.length; i++){
-        formAsJson[formArray[i]['name']] = formArray[i]['value'];
+    for (var i = 0; i < formArray.length; i++) {
+        var element = {};
+
+        if (!formArray[i]['value']) {
+            continue;
+        }
+
+        element['event'] = formArray[i]['name'];
+        element['score'] = formArray[i]['value'];
+
+        formAsJson[i] = element;
     }
 
     $.ajax({
